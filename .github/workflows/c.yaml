@@ -11,7 +11,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Compile fibonacci
-        run: make fibonacci
+        run: |
+          cd c/
+          make fibonacci
 
       - name: Run fibonacci script 
         run: ./fibonacci 30
