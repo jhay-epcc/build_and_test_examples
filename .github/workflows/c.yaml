@@ -17,7 +17,7 @@ jobs:
           pwd
 
       - name: Compile fibonacci
-        run: make fibonacci
+        run: make src/fibonacci
 
       - name: Run fibonacci script 
         run: ./fibonacci 30
