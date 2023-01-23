@@ -1,0 +1,32 @@
+name: test c
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: latest
+          platform: x64
+
+      - name: Compile fibonacci
+        run: make c/fibonacci
+
+      - name: Run fibonacci script 
+        run: ./c/fibonacci 30
+
+      - name: Compile and run tests
+        run: make c/test
+
+      - Convert XML report into XML xUnit
+        run: make c/xunit-report
+
+      - name: Clean up
+        run: make clean
