@@ -13,6 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install CUnit
+        run: sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
+
       - name: Compile fibonacci
         run: make fibonacci
 
