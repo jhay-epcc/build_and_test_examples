@@ -10,14 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Change directory
-        run: |
-          pwd
-          cd c/
-          pwd
-
       - name: Compile fibonacci
-        run: make src/fibonacci
+        run: make fibonacci
 
       - name: Run fibonacci script 
         run: ./fibonacci 30
