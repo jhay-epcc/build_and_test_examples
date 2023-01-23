@@ -14,9 +14,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install OpenJDK
-        run: |
-          sudo apt-get install openjdk-8-jdk openjdk-8-doc openjdk-8-jre-lib
-          java -version
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 8
 
       - name: Install ANT
         run: |
