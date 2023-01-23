@@ -16,15 +16,22 @@ jobs:
           make fibonacci
 
       - name: Run fibonacci script 
-        run: ./fibonacci 30
+        run: |
+          cd c/
+          ./fibonacci 30
 
       - name: Compile and run tests
-        run: make test
+        run: |
+          cd c/
+          make test
 
       - name: Convert XML report into XML xUnit
         run: |
+          cd c/
           make xunit-report
           cat TestResults.xml
 
       - name: Clean up
-        run: make clean
+        run: |
+          cd c/
+          make clean
