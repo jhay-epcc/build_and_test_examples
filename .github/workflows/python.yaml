@@ -9,4 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: run python script
       - run: python python/maths/fibonacci.py 30
+
+      - name: test python script
+      - run: py.test --junit-xml=report.xml
+      - run: cat report.xml
