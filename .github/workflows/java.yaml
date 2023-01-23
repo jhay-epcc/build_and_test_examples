@@ -1,0 +1,43 @@
+name: test java
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./java
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install OpenJDK
+        run: |
+          sudo apt-get install openjdk-8-jdk openjdk-8-doc openjdk-8-jre-lib
+          java -version
+
+      - name: Install ANT
+        run: |
+          sudo apt install ant
+          ant -version
+
+      - name: Compile and JAR
+        run: ant jar
+
+      - name: Run fibonacci script 
+        run: java -classpath build/lib/math.jar math.Fibonacci 30
+
+      - name: Compile and run tests
+        run: |
+          ant test
+          cat build/test/xml/TESTS-TestSuites.xml
+
+      - name: Convert XML report into HTML
+        run: |
+          ant test-report
+          cat build/test/html/index.html
+
+      - name: Clean up
+        run: ant clean
