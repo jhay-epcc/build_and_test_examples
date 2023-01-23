@@ -24,5 +24,6 @@ jobs:
         run: python python/maths/fibonacci.py 30
 
       - name: Test fibonacci script
-        run: py.test --junit-xml=report.xml
-        run: cat report.xml
+        run: |
+          py.test --junit-xml=report.xml
+          cat report.xml
