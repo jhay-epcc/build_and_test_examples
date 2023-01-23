@@ -14,12 +14,12 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-          tools: phunit
+          tools: phpunit
 
       - name: Run fibonacci script 
         run: php php/src/FibonacciProgram.php 30
 
       - name: Test fibonacci script
         run: |
-          phpunit --log-junit TestResults.xml --bootstrap src/autoload.php test/FibonacciTest.php
+          phpunit --log-junit TestResults.xml --bootstrap php/src/autoload.php php/test/FibonacciTest.php
           cat TestResults.xml
