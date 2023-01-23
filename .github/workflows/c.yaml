@@ -16,6 +16,9 @@ jobs:
       - name: Install CUnit
         run: sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
 
+      - name: Install xsltprox
+        run: sudo apt-get install xsltproc
+
       - name: Compile fibonacci
         run: make fibonacci
 
