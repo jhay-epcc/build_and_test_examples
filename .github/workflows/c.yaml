@@ -7,31 +7,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./c
     steps:
       - uses: actions/checkout@v3
 
       - name: Compile fibonacci
-        run: |
-          cd c/
-          make fibonacci
+        run: make fibonacci
 
       - name: Run fibonacci script 
-        run: |
-          cd c/
-          ./fibonacci 30
+        run: ./fibonacci 30
 
       - name: Compile and run tests
-        run: |
-          cd c/
-          make test
+        run: make test
 
       - name: Convert XML report into XML xUnit
         run: |
-          cd c/
           make xunit-report
           cat TestResults.xml
 
       - name: Clean up
-        run: |
-          cd c/
-          make clean
+        run: make clean
