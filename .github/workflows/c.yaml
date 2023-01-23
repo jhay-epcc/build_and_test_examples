@@ -16,17 +16,20 @@ jobs:
           version: latest
           platform: x64
 
+      - name: Change directory
+        run: cd c/
+
       - name: Compile fibonacci
-        run: make c/fibonacci
+        run: make fibonacci
 
       - name: Run fibonacci script 
-        run: ./c/fibonacci 30
+        run: ./fibonacci 30
 
       - name: Compile and run tests
-        run: make c/test
+        run: make test
 
       - name: Convert XML report into XML xUnit
-        run: make c/xunit-report
+        run: make xunit-report
 
       - name: Clean up
         run: make clean
