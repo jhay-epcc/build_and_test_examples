@@ -16,7 +16,7 @@ jobs:
           r-version: devel
 
       - name: Install testtools
-        run: install.packages("testthat")
+        run: Rscript -e 'install.packages("testthat")'
 
       - name: Install fibonacci
         run: |
