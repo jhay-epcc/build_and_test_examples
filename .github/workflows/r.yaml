@@ -20,7 +20,7 @@ jobs:
 
       - name: Install fibonacci
         run: |
-          R CMD check R
+          R CMD check R --no-manual
           R CMD INSTALL R
 
       - name: Install tests
