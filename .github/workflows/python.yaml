@@ -9,9 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+
+      - name: Update Python
+        uses: actions/setup-python@v1
         with:
-          name: pytest
-      - run: python python/maths/fibonacci.py 30
-      - run: py.test --junit-xml=report.xml
-      - run: cat report.xml
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          pip install pytest
+          py.test --version
+
+      - name: Run fibonacci script 
+        run: python python/maths/fibonacci.py 30
+
+      - name: Test fibonacci script
+        run: py.test --junit-xml=report.xml
+        run: cat report.xml
